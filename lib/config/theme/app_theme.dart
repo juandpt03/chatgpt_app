@@ -6,7 +6,7 @@ class AppTheme {
   final bool isDark;
 
   AppTheme({
-    this.colorSchemeSeed = const Color(0XFF83FFD2),
+    this.colorSchemeSeed = const Color(0XFF5F6FED),
     this.isDark = false,
   });
 
