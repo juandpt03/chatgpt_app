@@ -30,7 +30,7 @@ class _Message extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme;
-    final textStyle = Theme.of(context).textTheme.bodySmall?.copyWith(
+    final textStyle = Theme.of(context).textTheme.bodyMedium?.copyWith(
           color: color.secondary,
         );
     return Expanded(

@@ -30,7 +30,7 @@ class CustomBottomNavigationBar extends ConsumerWidget {
           label: 'Chat',
         ),
         BottomNavigationBarItem(
-          icon: Icon(FontAwesomeIcons.linkedin),
+          icon: Icon(FontAwesomeIcons.github),
           label: 'Perfil',
         ),
       ],

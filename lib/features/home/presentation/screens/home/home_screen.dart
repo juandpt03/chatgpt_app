@@ -15,9 +15,9 @@ class HomeScreen extends ConsumerWidget {
       body: IndexedStack(
         index: index,
         children: const [
-          SizedBox(),
-          ChatScreen(),
-          SizedBox(),
+          SettingsView(),
+          ChatView(),
+          LinkedingView(),
         ],
       ),
       bottomNavigationBar: const CustomBottomNavigationBar(),

@@ -5,8 +5,8 @@ import 'package:chatgpt_app/features/home/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ChatScreen extends StatelessWidget {
-  const ChatScreen({super.key});
+class ChatView extends StatelessWidget {
+  const ChatView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +48,10 @@ class _ChatView extends ConsumerWidget {
       child: Column(
         children: [
           const SizedBox(height: 10),
+          if (messageList.isEmpty)
+            Image.asset(
+              'assets/animations/hello.gif',
+            ),
           Expanded(
             child: ListView.builder(
               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -55,7 +59,7 @@ class _ChatView extends ConsumerWidget {
               itemBuilder: (context, index) {
                 final Message message = messageList[index];
                 return message.fromWho == FromWho.mine
-                    ? BounceInUp(
+                    ? FadeInUp(
                         child: MyMessageBubble(
                           message: message.text,
                         ),

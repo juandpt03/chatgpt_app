@@ -6,11 +6,13 @@ class MyMessageBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
     return Row(
       children: [
         _Message(message: message),
         CircleAvatar(
           radius: 15,
+          backgroundColor: colors.primaryContainer,
           child: Image.asset(
             'assets/images/logo/me.png',
             fit: BoxFit.cover,
@@ -28,7 +30,7 @@ class _Message extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme;
-    final textStyle = Theme.of(context).textTheme.bodySmall?.copyWith(
+    final textStyle = Theme.of(context).textTheme.bodyMedium?.copyWith(
           color: color.onPrimary,
         );
     return Expanded(

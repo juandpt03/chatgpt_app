@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MessageFieldBox extends StatelessWidget {
   final ValueChanged<String> onValue;
-  const MessageFieldBox({super.key, required this.onValue});
+  final void Function()? onPressed;
+
+  const MessageFieldBox({
+    super.key,
+    required this.onValue,
+    this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,19 +24,11 @@ class MessageFieldBox extends StatelessWidget {
       borderSide: BorderSide.none,
     );
     final inputDecoration = InputDecoration(
-      contentPadding: const EdgeInsets.symmetric(vertical: 20),
-      hintText: '¿Qué quieres preguntar?',
+      contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+      hintText: '¿Qué quisieras saber?',
       filled: true,
       border: underLineInputBorder,
       fillColor: colors.secondaryContainer,
-      prefixIcon: IconButton(
-        icon: Icon(
-          FontAwesomeIcons.microphone,
-          size: 20,
-          color: colors.primary,
-        ),
-        onPressed: () {},
-      ),
       suffixIcon: IconButton(
         icon: Icon(
           Icons.send,
@@ -39,6 +36,9 @@ class MessageFieldBox extends StatelessWidget {
         ),
         onPressed: () {
           final textValue = textController.value.text;
+          if (textValue.isEmpty) return;
+          focusNode.unfocus();
+          textController.clear();
           onValue(textValue);
         },
       ),
@@ -51,6 +51,7 @@ class MessageFieldBox extends StatelessWidget {
       controller: textController,
       decoration: inputDecoration,
       onFieldSubmitted: (value) {
+        if (value.isEmpty) return;
         textController.clear();
         focusNode.unfocus();
         onValue(value);
